@@ -12,10 +12,11 @@ public class Alogic {
             {-1,0},{1,0},{0,-1},{0,1}
     };
     private static class Node{
-        int[][] state;
-        int g;
-        int h;
-        Node parent;
+        int[][] state; // Поточний стан головоломки
+        int g; // Кількість кроків від початкового стану.
+        int h; // Евристичну оцінку для цього стану.
+        Node parent; //Посилання на батьківський вузол, який відтворює шлях до початкового стану.
+
         public Node(int[][] state, int g, int h, Node parent) {
             this.state=state;
             this.g=g;
@@ -24,7 +25,7 @@ public class Alogic {
         }
         public int getF(){
             return g+h;
-        }
+        } //Метод, який використовується для порівняння вузлів у черзі.
     }
 
     private static class NodeComparator implements Comparator<Node> {
@@ -32,7 +33,7 @@ public class Alogic {
         public int compare(Node n1, Node n2) {
             return Integer.compare(n1.getF(), n2.getF());
         }
-    }
+    } // Це для роботи пріоритетної черги, яка обирає вузли з найменшим значенням f.
 
     public List<int[][]> findSolution(int[][] initialState) {
         PriorityQueue<Node> openList=new PriorityQueue<>(new NodeComparator());
@@ -76,6 +77,7 @@ public class Alogic {
         }
         return neighbors;
     }
+
     private int[] findEmptyPosition(int[][] state) {
         for (int i=0; i<state.length; i++) {
             for (int j=0; j<state[i].length; j++) {
