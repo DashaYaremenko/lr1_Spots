@@ -14,7 +14,7 @@ public class Alogic {
     private static class Node{
         int[][] state; // Поточний стан головоломки
         int g; // Кількість кроків від початкового стану.
-        int h; // Евристичну оцінку для цього стану.
+        int h; // Евристична оцінка для цього стану.
         Node parent; //Посилання на батьківський вузол, який відтворює шлях до початкового стану.
 
         public Node(int[][] state, int g, int h, Node parent) {
@@ -89,7 +89,7 @@ public class Alogic {
         return null;
     }
 
-    // Перевіряємо, чи знаходиться позиція в межах поля
+    // Перевірка, чи знаходиться позиція в межах поля
     private boolean isValidPosition(int row, int col) {
         return row>=0 && row<3 && col>=0 && col<3;
     }
